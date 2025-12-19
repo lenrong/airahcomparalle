@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airah Comp Aralle - Toko Serba Ada di Mamasa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #e91e63;
+            --light-pink: #fce4ec;
+            --dark-pink: #ad1457;
+            --accent-pink: #ff4081;
+            --white: #ffffff;
+            --light-gray: #fafafa;
+            --dark-gray: #333333;
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Elegant */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-soft);
+            padding: 8px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--dark-pink), var(--primary-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .desktop-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-pink), var(--accent-pink));
+            transition: var(--transition);
+        }
+
+        .desktop-nav a:hover {
+            color: var(--primary-pink);
+        }
+
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--dark-pink), var(--primary-pink));
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 100px 30px 40px;
+            z-index: 999;
+            transition: var(--transition);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 18px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary-pink);
+            padding-left: 10px;
+        }
+
+        .mobile-nav a i {
+            width: 24px;
+            margin-right: 12px;
+            color: var(--primary-pink);
+        }
+
+        /* Hero Section Elegant */
+        .hero {
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><path d="M500,250Q400,400,250,500Q100,600,100,800Q100,1000,300,950Q500,900,500,750Q500,600,750,500Q1000,400,900,200Q800,0,500,250Z" fill="%23e91e63"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--dark-pink);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary-pink);
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            background: var(--light-pink);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-pink), var(--accent-pink));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+            font-size: 1.125rem;
+            color: #555;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(255, 64, 129, 0.05));
+            border-left: 4px solid var(--primary-pink);
+            padding: 28px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin-top: 32px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            height: 500px;
+            background: linear-gradient(135deg, var(--light-pink), white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .store-icon {
+            font-size: 150px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark-pink);
+            font-size: 1.25rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-pink), var(--accent-pink));
+            z-index: 2;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(255, 64, 129, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 36px;
+            color: var(--primary-pink);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--dark-pink);
+        }
+
+        /* Info Section */
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(255, 64, 129, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 30px;
+            color: var(--primary-pink);
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-pink);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon.facebook {
+            background: linear-gradient(135deg, #3b5998, #8b9dc3);
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        }
+
+        .social-icon.tiktok {
+            background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-pink), #880e4f);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--light-pink);
+        }
+
+        .footer-about p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--light-pink);
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.9;
+        }
+
+        .footer-contact i {
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .header-container {
+                padding: 16px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-image {
+                height: 350px;
+            }
+            
+            .store-icon {
+                font-size: 120px;
+            }
+            
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .service-card, .info-card {
+                padding: 32px 24px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="logo-text">Airah Comp Aralle</div>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="#home"><i class="fas fa-home"></i> Beranda</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> Tentang</a>
+                <a href="#services"><i class="fas fa-concierge-bell"></i> Layanan</a>
+                <a href="#info"><i class="fas fa-address-book"></i> Kontak</a>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#home"><i class="fas fa-home"></i> Beranda</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> Tentang Kami</a>
+            <a href="#services"><i class="fas fa-concierge-bell"></i> Layanan</a>
+            <a href="#info"><i class="fas fa-address-book"></i> Kontak</a>
+            <a href="https://wa.me/6287565687909" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content fade-in-up">
+            <h1>Solusi Lengkap Untuk Kebutuhan Harian Anda</h1>
+            <p class="hero-subtitle">Airah Comp Aralle menghadirkan beragam kebutuhan dalam satu tempat dengan pelayanan terbaik dan komitmen "Kepuasan Anda Prioritas Kami".</p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn-primary">
+                    <i class="fas fa-concierge-bell"></i> Lihat Layanan
+                </a>
+                <a href="https://wa.me/6287565687909" target="_blank" class="btn-secondary">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Tentang Kami</h2>
+                <p class="section-subtitle">Usaha ritel lokal yang berkomitmen memberikan pelayanan terbaik bagi masyarakat Aralle dan sekitarnya</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text fade-in-up">
+                    <p>Airah Comp Aralle merupakan usaha ritel lokal yang berlokasi di Aralle, Kabupaten Mamasa, Sulawesi Barat, yang melayani berbagai kebutuhan masyarakat dalam satu tempat. Kami berkomitmen memberikan pelayanan terbaik dengan mengedepankan prinsip "Kepuasan Anda Prioritas Kami."</p>
+                    <p>Sejak beroperasi, Airah Comp Aralle hadir untuk memenuhi kebutuhan alat tulis dan perlengkapan kantor, layanan digital, perlengkapan olahraga, serta transaksi perbankan melalui BRILink. Keberadaan kami ditujukan untuk mempermudah aktivitas harian masyarakat, baik pelajar, pekerja, maupun umum, tanpa harus berpindah-pindah tempat.</p>
+                    
+                    <div class="highlight-box">
+                        <p>Dalam operasionalnya, Airah Comp Aralle mengutamakan kelengkapan produk, kecepatan layanan, serta kepercayaan pelanggan. Didukung jam operasional yang panjang dan layanan pemesanan melalui WhatsApp, kami siap melayani kebutuhan pelanggan secara praktis dan efisien.</p>
+                    </div>
+                </div>
+                
+                <div class="about-image fade-in-up">
+                    <i class="fas fa-shopping-bag store-icon"></i>
+                    <div class="image-caption">Semua Kebutuhan Dalam Satu Tempat</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Layanan Kami</h2>
+                <p class="section-subtitle">Berbagai layanan lengkap untuk mendukung aktivitas harian masyarakat Aralle</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>ATK & Perlengkapan Kantor</h3>
+                    <p>Beragam alat tulis, perlengkapan kantor, dan kebutuhan sekolah dengan kualitas terbaik dan harga terjangkau.</p>
+                </div>
+                
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Layanan Digital</h3>
+                    <p>Pelayanan digital printing, fotokopi, scan, laminating, dan berbagai layanan digital lainnya untuk mendukung aktivitas Anda.</p>
+                </div>
+                
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Perlengkapan Olahraga</h3>
+                    <p>Kebutuhan olahraga untuk berbagai jenis kegiatan, mendukung gaya hidup sehat dan aktif masyarakat.</p>
+                </div>
+                
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>BRILink Agen Bank</h3>
+                    <p>Layanan perbankan seperti tarik tunai, setor tunai, transfer antarbank, pembayaran, dan berbagai transaksi keuangan lainnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="section" id="info">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Informasi & Kontak</h2>
+                <p class="section-subtitle">Hubungi kami untuk informasi lebih lanjut atau kunjungi toko kami di Aralle</p>
+            </div>
+            
+            <div class="info-container">
+                <div class="info-card fade-in-up">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Lokasi Kami</h3>
+                    <p><strong>Alamat:</strong><br>Aralle, Kabupaten Mamasa, Sulawesi Barat</p>
+                    <p>Temukan kami di pusat kota Aralle, lokasi strategis yang mudah dijangkau.</p>
+                </div>
+                
+                <div class="info-card fade-in-up">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Jam Operasional</h3>
+                    <p><strong>Setiap Hari:</strong><br>07.00 – 22.00 WITA</p>
+                    <p>Kami siap melayani kebutuhan Anda dari pagi hingga malam hari, termasuk akhir pekan dan hari libur.</p>
+                </div>
+                
+                <div class="info-card fade-in-up">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Kontak & Media Sosial</h3>
+                    <p><strong>WhatsApp:</strong><br>0875 6568 7909</p>
+                    <p>Layanan pemesanan dan konsultasi via WhatsApp tersedia selama jam operasional.</p>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon tiktok" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Airah <span>Comp Aralle</span></div>
+                    <p>Usaha ritel lokal yang melayani berbagai kebutuhan masyarakat Aralle dan sekitarnya dalam satu tempat dengan prinsip "Kepuasan Anda Prioritas Kami".</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Menu Cepat</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Layanan</a></li>
+                        <li><a href="#info"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Hubungi Kami</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Aralle, Kab. Mamasa, Sulawesi Barat</p>
+                    <p><i class="fas fa-phone-alt"></i> 0875 6568 7909 (WhatsApp)</p>
+                    <p><i class="fas fa-clock"></i> Setiap Hari: 07.00 - 22.00 WITA</p>
+                    <p><i class="fas fa-envelope"></i> airahcomparalle@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Airah Comp Aralle. Semua hak dilindungi.</p>
+                <p>Dibuat dengan <i class="fas fa-heart" style="color: #f8bbd9;"></i> untuk masyarakat Aralle dan sekitarnya</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6287565687909" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+        
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+            element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Prevent scroll when mobile menu is open
+        document.addEventListener('touchmove', function(e) {
+            if (mobileNav.classList.contains('active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
